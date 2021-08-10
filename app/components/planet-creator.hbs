@@ -1,0 +1,20 @@
+<form onsubmit={{perform this.create}} class="bg-gray-100 border border-gray-200 p-2 mb-4" ...attributes>
+  <h3 class="font-bold">Create a planet</h3>
+
+  <label for="planet-name">Name</label>
+  <Input
+    @type="text"
+    @value={{this.name}}
+    id="planet-name"
+    disabled={{this.create.isRunning}}
+    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+  />
+
+  <button
+    type='submit'
+    class='inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4'
+    disabled={{this.create.isRunning}}
+  >
+    Create
+  </button>
+</form>
