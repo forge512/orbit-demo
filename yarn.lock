@@ -5154,7 +5154,7 @@ ember-maybe-import-regenerator@^0.1.6:
     ember-cli-babel "^6.0.0-beta.4"
     regenerator-runtime "^0.9.5"
 
-ember-orbit@^0.17.0-beta.14:
+ember-orbit@^0.17.0-beta.15:
   version "0.17.0-beta.15"
   resolved "https://registry.yarnpkg.com/ember-orbit/-/ember-orbit-0.17.0-beta.15.tgz#8edce11447aee4f8216027416c86d36d06ca4d6a"
   integrity sha512-fZgE2M1tGOiwzgh0CyGyaABAbQOUzf6eFmm6uOH0N65+KQEmzXwy2fVDlnto5QaV11IkLbfwYtxqIvK8tjsQwQ==
