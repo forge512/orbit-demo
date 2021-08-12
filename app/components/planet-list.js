@@ -11,6 +11,7 @@ export default class PlanetListComponent extends Component {
     return this.store.cache.liveQuery((q) => q.findRecords('planet'));
   }
 
+  /* eslint require-yield: off */
   @dropTask
   *refresh() {
     this.staticPlanets = this.store.cache.findRecords('planet');
