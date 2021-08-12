@@ -5189,10 +5189,10 @@ ember-modifier-manager-polyfill@^1.1.0:
     ember-cli-version-checker "^2.1.2"
     ember-compatibility-helpers "^1.2.0"
 
-ember-orbit@^0.17.0-beta.16:
-  version "0.17.0-beta.16"
-  resolved "https://registry.yarnpkg.com/ember-orbit/-/ember-orbit-0.17.0-beta.16.tgz#2869cd5a37f1d1c09ec32c5742fd8214f9a7c75f"
-  integrity sha512-DOn1nL3VxXUi37dVmMGU5k+BueD+Y4yEsewOC78s2bdKVzvglGWVq9H54SOIXc/PkO9N5nAjNliYptWn4M41jQ==
+ember-orbit@^0.17.0-beta.17:
+  version "0.17.0-beta.17"
+  resolved "https://registry.yarnpkg.com/ember-orbit/-/ember-orbit-0.17.0-beta.17.tgz#7fd9059351da20357ab853cc0bab3782063ca132"
+  integrity sha512-fsQKB6VtyT2DleDMETDYSr5PwLhsEk2N6qPE6zb/25EIDpOwnxZoDvLzHdzJ8E7bu2tzLfCv5TNM418lHKbwdw==
   dependencies:
     "@glimmer/tracking" "^1.0.4"
     "@orbit/coordinator" "^0.17.0-beta.25"
