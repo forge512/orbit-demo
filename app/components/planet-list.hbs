@@ -1,4 +1,4 @@
-<div ...attributes {{did-insert (perform this.refresh)}}>
+<div ...attributes>
   <div class="flex items-center justify-between">
     <div class="font-bold">live query</div>
 
@@ -18,8 +18,8 @@
 
   <hr class="my-8" />
 
-  <div class="flex items-center justify-between mb-2">
-    <div class="font-bold">static query</div>
+  <div class="flex items-center justify-between mb-2" {{did-insert this.createFork}}>
+    <div class="font-bold">Displayed from fork</div>
 
     <div>
       <button
@@ -32,11 +32,26 @@
 
       <button
         type='button'
-        class='inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-        disabled={{this.create.isRunning}}
-        onClick={{perform this.refresh}}
+        class='inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+        onClick={{this.destroyFork}}
       >
-        Fork
+        Destroy Fork
+      </button>
+
+      <button
+        type='button'
+        class='inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+        onClick={{perform this.rebase}}
+      >
+        Rebase
+      </button>
+
+      <button
+        type='button'
+        class='inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+        onClick={{this.requery}}
+      >
+        Requery
       </button>
     </div>
   </div>

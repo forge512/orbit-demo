@@ -11,6 +11,7 @@
         />
       {{else}}
         {{@planet.name}}
+        -- {{this.moonNames}}
       {{/if}}
     </div>
 
@@ -37,7 +38,7 @@
 
  {{#if @displayMoons}}
     {{#each @planet.moons as |moon i|}}
-      <div>{{i}}: {{moon.name}}</div>
+      <Moon @moon={{moon}} @index={{i}} />
     {{/each}}
   {{/if}}
 </div>

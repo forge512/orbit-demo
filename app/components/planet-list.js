@@ -18,11 +18,32 @@ export default class PlanetListComponent extends Component {
     this.displayMoons = !this.displayMoons;
   }
 
-  /* eslint require-yield: off */
+  @action
+  destroyFork() {
+    this.fork.destroy();
+  }
+
+  @action
+  createFork() {
+    this.fork = this.store.fork();
+    this.requery();
+  }
+
+  @action
+  requery() {
+    this.staticPlanets = this.fork.cache.findRecords('planet');
+  }
+
   @dropTask
-  *refresh() {
-    let fork = this.store.fork();
-    this.staticPlanets = fork.cache.findRecords('planet');
+  *rebase() {
+    let oldFork = this.fork;
+    let newFork = this.store.fork();
+    yield newFork.merge(oldFork);
+    this.fork = newFork;
+    yield oldFork.destroy();
+
+    // This would fix the issue as it updates references to the new fork
+    // this.staticPlanets = this.fork.cache.findRecords('planet');
   }
 
   @dropTask

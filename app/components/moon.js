@@ -9,20 +9,16 @@ export default class PlanetComponent extends Component {
   @tracked displayEditor = false;
   @tracked name = '';
 
-  get moonNames() {
-    return this.args.planet.moons.mapBy('name').join(', ');
-  }
-
   @dropTask
   *toggleEditor() {
     if (this.displayEditor) {
       let fork = this.store.fork();
-      let planet = fork.cache.findRecord(this.args.planet);
-      planet.name = this.name;
+      let moon = fork.cache.findRecord(this.args.moon);
+      moon.name = this.name;
       yield this.store.merge(fork);
       fork.destroy();
     } else {
-      this.name = this.args.planet.name;
+      this.name = this.args.moon.name;
     }
 
     this.displayEditor = !this.displayEditor;

@@ -5,8 +5,10 @@ export default class ApplicationRoute extends Route {
   @service dataCoordinator;
   @service store;
 
-  model() {
-    return this.store.findRecords('planet', { include: ['moons'] });
+  async model() {
+    // return this.store.findRecords('planet', { include: ['moons'] });
+    let planet = await this.store.findRecords('planet');
+    return this.store.findRecords('moon');
   }
 
   async beforeModel() {
