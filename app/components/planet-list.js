@@ -24,4 +24,9 @@ export default class PlanetListComponent extends Component {
     let fork = this.store.fork();
     this.staticPlanets = fork.cache.findRecords('planet');
   }
+
+  @dropTask
+  *reload() {
+    yield this.store.findRecords('planet', { include: ['moons'] });
+  }
 }

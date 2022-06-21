@@ -1,9 +1,6 @@
-export default function(/* server */) {
+export default function (server) {
+  window.mirage = { server: server };
 
-  /*
-    Seed your development database using your factories.
-    This data will not be loaded in your tests.
-  */
-
-  // server.createList('post', 10);
+  let planet = server.create('planet', { name: 'Earth' });
+  server.create('moon', { planet: planet, name: 'moon' });
 }
