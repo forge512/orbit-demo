@@ -1,0 +1,44 @@
+<div class="p-2 mb-2 border border gray-100">
+  <div class="flex items-center justify-between mb-2">
+    <div>
+      {{#if this.displayEditor}}
+        <Input
+          @type="text"
+          @value={{this.name}}
+          id="planet-name"
+          disabled={{this.create.isRunning}}
+          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+        />
+      {{else}}
+        {{@planet.name}}
+        -- {{this.moonNames}}
+      {{/if}}
+    </div>
+
+    <div>
+      <button
+        type='button'
+        class='inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+        disabled={{this.toggleEditor.isRunning}}
+        onClick={{perform this.toggleEditor}}
+      >
+        Edit
+      </button>
+
+      <button
+        type='button'
+        class='inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+        disabled={{this.remove.isRunning}}
+        onClick={{perform this.remove @planet}}
+      >
+        Delete
+      </button>
+    </div>
+ </div>
+
+ {{#if @displayMoons}}
+    {{#each @planet.moons as |moon i|}}
+      <Moon @moon={{moon}} @index={{i}} />
+    {{/each}}
+  {{/if}}
+</div>

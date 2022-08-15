@@ -5,6 +5,12 @@ export default class ApplicationRoute extends Route {
   @service dataCoordinator;
   @service store;
 
+  async model() {
+    // return this.store.findRecords('planet', { include: ['moons'] });
+    let planet = await this.store.findRecords('planet');
+    return this.store.findRecords('moon');
+  }
+
   async beforeModel() {
     // Populate the store from backup prior to activating the coordinator
     // As users browse more data this way of loading the store would

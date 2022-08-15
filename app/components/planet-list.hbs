@@ -1,47 +1,62 @@
-<div ...attributes {{did-insert (perform this.refresh)}}>
-  <div class="font-bold">live query</div>
+<div ...attributes>
+  <div class="flex items-center justify-between">
+    <div class="font-bold">live query</div>
+
+    <button
+      type='button'
+      class='inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+      disabled={{this.reload.isRunning}}
+      onClick={{perform this.reload}}
+    >
+      Reload
+    </button>
+  </div>
 
   {{#each this.planets as |planet|}}
-    <div class="p-2 mb-2 border border gray-100">
-      <div class="flex items-center justify-between mb-2">
-        <div>{{planet.name}}</div>
-
-        <button
-          type='button'
-          class='inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-          disabled={{this.remove.isRunning}}
-          onClick={{perform this.remove planet}}
-        >
-          Delete
-        </button>
-     </div>
-      {{#each planet.moons as |moon i|}}
-        <div>{{i}}: {{moon.name}}</div>
-      {{/each}}
-    </div>
+    <Planet @planet={{planet}} @displayMoons={{true}}/>
   {{/each}}
 
   <hr class="my-8" />
 
-  <div class="flex items-center justify-between mb-2">
-    <div class="font-bold">static query</div>
+  <div class="flex items-center justify-between mb-2" {{did-insert this.createFork}}>
+    <div class="font-bold">Displayed from fork</div>
 
-    <button
-      type='button'
-      class='inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
-      disabled={{this.create.isRunning}}
-      onClick={{perform this.refresh}}
-    >
-      Refresh
-    </button>
+    <div>
+      <button
+        type='button'
+        class='inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+        onClick={{this.toggleMoons}}
+      >
+        {{if this.displayMoons 'Hide Moons' 'Show Moons'}}
+      </button>
+
+      <button
+        type='button'
+        class='inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+        onClick={{this.destroyFork}}
+      >
+        Destroy Fork
+      </button>
+
+      <button
+        type='button'
+        class='inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+        onClick={{perform this.rebase}}
+      >
+        Rebase
+      </button>
+
+      <button
+        type='button'
+        class='inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+        onClick={{this.requery}}
+      >
+        Requery
+      </button>
+    </div>
   </div>
 
   {{#each this.staticPlanets as |planet|}}
-    <div class="p-2 mb-2 border border gray-100">
-      <div>{{planet.name}}</div>
-      {{#each planet.moons as |moon i|}}
-        <div>{{i}}: {{moon.name}}</div>
-      {{/each}}
-    </div>
+    <Planet @planet={{planet}} @displayMoons={{this.displayMoons}} />
   {{/each}}
 </div>

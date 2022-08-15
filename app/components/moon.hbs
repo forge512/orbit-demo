@@ -1,0 +1,27 @@
+<div class="flex items-center justify-between">
+  <div>
+    {{@index}}: 
+    {{#if this.displayEditor}}
+      <Input
+        @type="text"
+        @value={{this.name}}
+        id="moon-name"
+        disabled={{this.create.isRunning}}
+        class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+      />
+    {{else}}
+      {{@moon.name}}
+    {{/if}}
+  </div>
+
+  <div>
+    <button
+      type='button'
+      class='inline-flex items-center px-2.5 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'
+      disabled={{this.toggleEditor.isRunning}}
+      onClick={{perform this.toggleEditor}}
+    >
+      Edit
+    </button>
+  </div>
+</div>
